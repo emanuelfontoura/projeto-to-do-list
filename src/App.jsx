@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import List from './List';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const styleDivContainer = {
+    display: 'flex',
+    alignItems: 'flex-end',
+    gap:'15px'
+  }
+  const styleInput = {
+    width: '100%'
+  }
+  const styleDivInput = {
+    width:'45%', 
+    minWidth: '30%', 
+    maxWidth: '40%'
+  }
+  const styleDivList = {
+    padding: '15px',
+    border: '1px solid white',
+    marginTop: '30px',
+    height: '100vh'
+  }
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+  const inpt = React.useRef()
+  const [input, setInput] = React.useState('')
+  const [tarefas, setTarefas] = React.useState([])
+
+  function handleAdd(){
+    if(input !== ''){
+      setTarefas([...tarefas, input])
+      setInput('')
+    }
+    inpt.current.focus()
+  }
+
+  return <>
+  
+    <div style={styleDivContainer}>
+      <div style={styleDivInput}>
+        <label htmlFor="tarefa">Tarefa: </label>
+        <input style={styleInput} type="text" name="tarefa" id="tarefa" value={input} onChange={(event) => setInput(event.target.value)} ref={inpt}/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <button onClick={handleAdd}>ADD</button>
+    </div>
+  
+    <div style={styleDivList}>
+      <List list={tarefas}/>
+    </div>
+  </>
 }
 
-export default App
+export default App;

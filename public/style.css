@@ -1,0 +1,86 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul{
+  list-style: none;
+  padding: 20px;
+}
+
+.listaTarefas > li {
+  padding: 15px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.listaTarefasImagens{
+  display: flex;
+  gap: 15px;
+}
+
+.listaTarefasImagens li img,
+.listaTarefasImagens li input
+{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.listaTarefas span{
+  display: flex;
+  align-items: center;
+}
+
+.listaTarefas span::before{
+  content: "";
+  background-image: url('./face-smile-regular.svg');
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  vertical-align: center;
+  margin-right: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color);
+  background: white;
+  box-shadow: 0 0 0 3px var(--color-light);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  transition: 0.1s;
+  background: var(--color);
+  color: var(--color-dark);
+  padding: 0.8rem 1.6rem;
+}
+
+button:hover,
+button:focus {
+  background: var(--color);
+  box-shadow: 0 0 0 3px var(--color-light), 0 0 0 4px var(--color);
+  outline: none;
+}
+
+button:active {
+  box-shadow: 0 0 0 3px var(--color), 0 0 0 4px var(--color);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
