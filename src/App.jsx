@@ -45,7 +45,7 @@ function App() {
     </div>
   
     <div style={styleDivList}>
-      <List list={tarefas}/>
+      <List list={tarefas} setTarefas={setTarefas}/>
     </div>
   </>
 }

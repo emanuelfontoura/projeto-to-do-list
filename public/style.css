@@ -16,6 +16,7 @@ ul{
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 
 .listaTarefasImagens{
@@ -28,7 +29,6 @@ ul{
 {
   width: 20px;
   height: 20px;
-  cursor: pointer;
 }
 
 .listaTarefas span{
