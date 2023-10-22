@@ -1,5 +1,6 @@
 import React from 'react';
 import List from './List';
+import Modal from './Modal';
 
 function App() {
   const styleDivContainer = {
@@ -25,6 +26,8 @@ function App() {
   const inpt = React.useRef()
   const [input, setInput] = React.useState('')
   const [tarefas, setTarefas] = React.useState([])
+  const [modal, setModal] = React.useState(false)
+  const [element, setElement] = React.useState(null)
 
   function handleAdd(){
     if(input !== ''){
@@ -45,8 +48,9 @@ function App() {
     </div>
   
     <div style={styleDivList}>
-      <List list={tarefas} setTarefas={setTarefas}/>
+      <List list={tarefas} setTarefas={setTarefas} setModal={setModal} element={element} setElement={setElement}/>
     </div>
+    <Modal modal={modal} setModal={setModal} element={element}/>
   </>
 }
 
