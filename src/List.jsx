@@ -6,16 +6,14 @@ const List = ({list, setTarefas, setModal, element, setElement}) => {
     setTarefas(updatedItems)
   }
 
-  const spanRef = React.useRef()
-
   return <ul className='listaTarefas'>
     {list.map((tarefa, index) => {
       return <li key={index}>
-        <span ref={spanRef}>{tarefa}</span>
+        <span>{tarefa}</span>
         <ul className='listaTarefasImagens'>
           <li><img onClick={() => {
             setModal(true)
-            setElement(spanRef)
+            setElement(index)
           }} src="./pen-solid.svg" alt="Editar" /></li>
           <li><img onClick={() => handleClickRemove(index)} src="./trash-solid.svg" alt="REMOVER" /></li>
           <li><input className='inptCheck' type="checkbox" name="" id="" /></li>

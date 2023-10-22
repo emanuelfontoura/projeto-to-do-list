@@ -36,7 +36,20 @@ function App() {
     }
     inpt.current.focus()
   }
-
+  
+  React.useEffect(() => {
+    const tarefasLocalStorage = window.localStorage.getItem('tarefas')
+    
+    if(tarefasLocalStorage){
+      const tarefasArray = tarefasLocalStorage.split(',')
+      setTarefas(tarefasArray)
+    }
+  }, [])
+  
+  React.useEffect(() => {
+    window.localStorage.setItem('tarefas', tarefas)
+  }, [tarefas])
+  
   return <>
   
     <div style={styleDivContainer}>
@@ -50,7 +63,7 @@ function App() {
     <div style={styleDivList}>
       <List list={tarefas} setTarefas={setTarefas} setModal={setModal} element={element} setElement={setElement}/>
     </div>
-    <Modal modal={modal} setModal={setModal} element={element}/>
+    <Modal list ={tarefas} setTarefas={setTarefas} modal={modal} setModal={setModal} element={element}/>
   </>
 }
 
